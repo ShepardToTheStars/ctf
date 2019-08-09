@@ -38,7 +38,7 @@ https://transfer.sh/LGs7a/starfleet_terminal
 ### Step 4
 Now we have a URL. Let's check that out.
 
-[<img src="images/4-transfer-sh-url.png" width="900">](images/2-transfer-sh-url.png)
+[<img src="images/4-transfer-sh-url.png" width="900">](images/4-transfer-sh-url.png)
 
 Looks like it wants us to download a file called `starfleet_terminal`, with an nondescript filetype. I downloaded it and checked it out.
 
