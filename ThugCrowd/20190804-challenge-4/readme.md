@@ -441,7 +441,7 @@ Look like its a png, so let's download that. We get this, a QR code.
 
 Reading the QR code with my phone asks me if I want to open it up in Google Authenticator, which means its a Google Auth OTP?
 
-[<img src="images/9-google-auth.jpg" width="300">
+<img src="images/9-google-auth.jpg" width="300">
 
 We'll save that for later. Let's take a look at the QR code's content first, using `zbarimg`.
 
