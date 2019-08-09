@@ -476,13 +476,10 @@ DESTRUCT SEQUENCE
     ONE      
 ```
 
-The odd thing is that my terminal is waiting for the connection to close, but nothing is happening. Hmmm. That, and the fact that we aren't getting HTTP headers back, means that its probably not an HTTP port. Let's try with telnet.
+The odd thing is that my terminal is waiting for the connection to close, but nothing is happening. Hmmm. That, and the fact that we aren't getting HTTP headers back, means that its probably not an HTTP port. Let's try with `nc`.
 
 ```
-$ telnet 35.238.179.129 42069
-Trying 35.238.179.129...
-Connected to 129.179.238.35.bc.googleusercontent.com.
-Escape character is '^]'.
+$ nc 35.238.179.129 42069
 DESTRUCT SEQUENCE
     ONE      
   CODE:951015
@@ -501,8 +498,7 @@ DESTRUCT SEQUENCE
 ABORTING
 DESTRUCT SEQUENCE
     ONE      
-  CODE:^]
-telnet> ^C
+  CODE:
 ```
 
 The codes that I tried are the following: 
@@ -563,7 +559,7 @@ ENCRYPTED MESSAGE FROM THUGFLEET               .
    *.::'*****************`.*
    .:'  ***************    .
   .
-
+toqxj4W0pZO9tKXWhKSls77V3teDr4yPrqGLkYO0pZ2F1Z/VvbC2gIOgj4uur6XWgomXlL20ooC11d+Ag6DfgISKi5GDpNKXhbSl14WepY2EirGPg6CygL6w04C+sKmNhdSxkoOk04CxoI
 ```
 
 Really? That was the correct sequence, with the OTP being the final command code? *Groan*. Well played [@ThugCrowd](https://twitter.com/thugcrowd). At least now, I have the next piece in the puzzle.
