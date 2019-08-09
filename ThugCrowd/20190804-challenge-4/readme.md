@@ -516,3 +516,63 @@ No dice.
 ### Stuck :(
 
 At this point, I'm stuck. I went to a conference for the last few days, so I haven't really had time to sit down and figure this out. I still have some more time as of writing this, so let's hope that I can re-look over some stuff and see if I missed anything.
+
+### Step 10 - Part 2 (Unstuck)
+
+So, a few days later, I took a look at the twitter replies to the original one, and saw that someone said that the OTP isn't the first thing thats entered. They mentioned some unknown Youtube video, and said that that's not how the code is entered. So, maybe I need to look up some Star Trek specifics (I've watched the stuff from the 90's but never paid attention to the codes they said, lol).
+
+I ended up finding [this Star Trek fan wiki article](https://memory-beta.fandom.com/wiki/Self_destruct) on the self-destruct sequence. The important part is as follows:
+
+>The Captain would give the first destruct sequence, which was "Code 1,1A." The first officer would then give the second part, which was "Code 1,1A,2B." Then the chief engineer would give the third sequence, which was "Code 1B,2B,3." The computer would then announce that the sequence was complete, and would request the final sequence to activate the self-destruct sequence. The Captain would give the final sequence, which was the words "Zero-Zero-Zero Destruct Zero." Once the final code was given, the auto-destruct would begin, counting down from 30 seconds.".
+
+So, I tried that.
+
+```
+$ nc 35.238.179.129 42069
+DESTRUCT SEQUENCE
+    ONE
+  CODE:11A
+DESTRUCT SEQUENCE
+    TWO
+  CODE:11A2B
+DESTRUCT SEQUENCE
+   THREE
+  CODE:1B2B3
+
+DESTRUCT SEQUENCE
+ COMPLETED
+   AND ENGAGED
+
+  AWAITING
+ FINAL CODE
+  FOR 30-SECOND
+    COUNTDOWN
+
+  CODE:413961
+ENCRYPTED MESSAGE FROM THUGFLEET               .
+              .:.
+             .:::.
+            .:::::.
+        ***.:::::::.***
+   *******.:::::::::.*******
+ ********.:::::::::::.********
+********.:::::::::::::.********
+*******.::::::'***`::::.*******
+******.::::'*********`::.******
+ ****.:::'*************`:.****
+   *.::'*****************`.*
+   .:'  ***************    .
+  .
+
+```
+
+Really? That was the correct sequence, with the OTP being the final command code? *Groan*. Well played [@ThugCrowd](https://twitter.com/thugcrowd). At least now, I have the next piece in the puzzle.
+
+### Part 11
+
+```
+toqxj4W0pZO9tKXWhKSls77V3teDr4yPrqGLkYO0pZ2F1Z/VvbC2gIOgj4uur6XWgomXlL20ooC11d+Ag6DfgISKi5GDpNKXhbSl14WepY2EirGPg6CygL6w04C+sKmNhdSxkoOk04CxoI
+```
+
+An encrypted string, according to the message. Hmmm.
+
