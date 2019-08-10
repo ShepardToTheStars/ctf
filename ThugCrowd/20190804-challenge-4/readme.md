@@ -544,7 +544,12 @@ DESTRUCT SEQUENCE
   FOR 30-SECOND
     COUNTDOWN
 
-  CODE:413961
+  AWAITING
+ FINAL CODE
+  FOR 30-SECOND
+    COUNTDOWN
+
+  CODE:914022
 ENCRYPTED MESSAGE FROM THUGFLEET               .
               .:.
              .:::.
@@ -559,7 +564,7 @@ ENCRYPTED MESSAGE FROM THUGFLEET               .
    *.::'*****************`.*
    .:'  ***************    .
   .
-toqxj4W0pZO9tKXWhKSls77V3teDr4yPrqGLkYO0pZ2F1Z/VvbC2gIOgj4uur6XWgomXlL20ooC11d+Ag6DfgISKi5GDpNKXhbSl14WepY2EirGPg6CygL6w04C+sKmNhdSxkoOk04CxoI
+d0twTkR1ZFJ8dWQXRWVkcn8UHxZCbk1Ob2BKUEJ1ZFxEFF4UfHF3QUJhTkpvbmQXQ0hWVXx1Y0F0FB5BQmEeQUVLSlBCZRNWRHVkFkRfZExFS3BOQmFzQX9xEkF/cWhMRBVwU0JlEkFwYU5KRE9kV0QUSlNvZWhPRBVsSGlLTlBCYV5WREtzU39LXlZETxNIfF9kTkRLd0FCbkpRfHVnTn9+cBZHZWRicWMTaUIUYFFEbnRecxdkdn8XcHFwbmBjRxZOV38UYHFwcGwSd018bHdBGxs=
 ```
 
 Really? That was the correct sequence, with the OTP being the final command code? *Groan*. Well played [@ThugCrowd](https://twitter.com/thugcrowd). At least now, I have the next piece in the puzzle.
@@ -567,8 +572,8 @@ Really? That was the correct sequence, with the OTP being the final command code
 ### Part 11
 
 ```
-toqxj4W0pZO9tKXWhKSls77V3teDr4yPrqGLkYO0pZ2F1Z/VvbC2gIOgj4uur6XWgomXlL20ooC11d+Ag6DfgISKi5GDpNKXhbSl14WepY2EirGPg6CygL6w04C+sKmNhdSxkoOk04CxoI
+d0twTkR1ZFJ8dWQXRWVkcn8UHxZCbk1Ob2BKUEJ1ZFxEFF4UfHF3QUJhTkpvbmQXQ0hWVXx1Y0F0FB5BQmEeQUVLSlBCZRNWRHVkFkRfZExFS3BOQmFzQX9xEkF/cWhMRBVwU0JlEkFwYU5KRE9kV0QUSlNvZWhPRBVsSGlLTlBCYV5WREtzU39LXlZETxNIfF9kTkRLd0FCbkpRfHVnTn9+cBZHZWRicWMTaUIUYFFEbnRecxdkdn8XcHFwbmBjRxZOV38UYHFwcGwSd018bHdBGxs=
 ```
 
-An encrypted string, according to the message. Hmmm.
+An encrypted string, according to the message. Hmmm. Stuck again. :(
 
