@@ -8,7 +8,7 @@
 | Redirects Tier 1 | Let us redirect you to one of our crypto currency addresses which are not promoted any longer. | 
 | Repetitive Registration | Follow the DRY principle while registering a user. | 
 | Score Board | Find the carefully hidden 'Score Board' page. | :white_check_mark:
-| XSS Tier 0 | Perform a reflected XSS attack with `\<iframe src="javascript:alert(\`xss\`)"\>`. | 
-| XSS Tier 1 | Perform a DOM XSS attack with `\<iframe src="javascript:alert(\`xss\`)"\>`. | 
+| XSS Tier 0 | Perform a reflected XSS attack with an iframe alerting XSS`. | 
+| XSS Tier 1 | Perform a DOM XSS attack with an iframe alerting XSS. | 
 | Zero Stars | Give a devastating zero-star feedback to the store. | 
 
