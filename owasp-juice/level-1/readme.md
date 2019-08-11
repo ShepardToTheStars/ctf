@@ -18,6 +18,7 @@
 
 ### Confidential Document
 > Access a confidential document.
+
 * Solved? :white_check_mark:
 * Tools Used: Just Chrome
 
@@ -51,6 +52,7 @@ I know that this is a faux FTP directory, but don't use your web servers for FTP
 
 ### Error Handling
 > Provoke an error that is not very gracefully handled.
+
 * Solved? :heavy_minus_sign:
 * Tools Used: :heavy_minus_sign:
 
@@ -58,6 +60,7 @@ TODO
 
 ### Privacy Policy Tier 1
 > Read our privacy policy.
+
 * Solved? :white_check_mark:
 * Tools Used: Just Chrome
 
@@ -67,6 +70,7 @@ This one was funny. I stumbled upon it just clicking on links, looking if I coul
 
 ### Redirects Tier 1
 > Let us redirect you to one of our crypto currency addresses which are not promoted any longer.
+
 * Solved? :heavy_minus_sign:
 * Tools Used: :heavy_minus_sign:
 
@@ -76,6 +80,7 @@ This one was funny. I stumbled upon it just clicking on links, looking if I coul
 
 ### Score Board
 > Find the carefully hidden 'Score Board' page.
+
 * Solved? :white_check_mark:
 * Tools Used: Chrome, Chrome Inspector
 
@@ -120,6 +125,7 @@ Never trust user input, at any level! Solved!
 
 ### XSS Tier 1
 > Perform a DOM XSS attack with an iframe alerting XSS.
+
 * Solved? :white_check_mark:
 * Tools Used: Chrome, Chrome Inspector
 
@@ -137,6 +143,7 @@ Yep, it did. Always sanitize user input, even on the front end! Solved!
 
 ### Zero Stars
 >  Give a devastating zero-star feedback to the store.
+
 * Solved? :heavy_minus_sign:
 * Tools Used: Chrome, Chrome Inspector, curl
 
