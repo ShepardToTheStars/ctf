@@ -5,7 +5,7 @@
 | Challenge | Description | Status |
 | --- | --- | --- |
 | Confidential Document | Access a confidential document. | :white_check_mark:
-| Error Handling | Provoke an error that is not very gracefully handled. | :heavy_minus_sign:
+| Error Handling | Provoke an error that is not very gracefully handled. | :white_check_mark:
 | Privacy Policy Tier 1 | Read our privacy policy. | :white_check_mark:
 | Redirects Tier 1 | Let us redirect you to one of our crypto currency addresses which are not promoted any longer. | :heavy_minus_sign:
 | Repetitive Registration | Follow the DRY principle while registering a user. | :heavy_minus_sign:
@@ -53,10 +53,67 @@ I know that this is a faux FTP directory, but don't use your web servers for FTP
 ### Error Handling
 > Provoke an error that is not very gracefully handled.
 
-* Solved? :heavy_minus_sign:
-* Tools Used: :heavy_minus_sign:
+* Solved? :white_check_mark:
+* Tools Used: curl
 
-TODO 
+Accidentally solves this while attempting the _Repetitive Registration_ challenge. If you attempts to make a call to the the API without an `Authorization` header (when it requires one), it shows a little more information that it should. There's a an HTML tag for a stack trace, but for this error, it didn't get populated. We did get the ExpressJS version, which might be useful to look into for open vulnerabilities for this specific version.
+
+```
+$ curl http://vanessa-owasp-juice.centralus.azurecontainer.io:3000/api/Users/21
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>UnauthorizedError: No Authorization header was found</title>
+    <style>* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+body {
+  padding: 80px 100px;
+  font: 13px "Helvetica Neue", "Lucida Grande", "Arial";
+  background: #ECE9E9 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ECE9E9));
+  background: #ECE9E9 -moz-linear-gradient(top, #fff, #ECE9E9);
+  background-repeat: no-repeat;
+  color: #555;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2 {
+  font-size: 22px;
+  color: #343434;
+}
+h1 em, h2 em {
+  padding: 0 5px;
+  font-weight: normal;
+}
+h1 {
+  font-size: 60px;
+}
+h2 {
+  margin-top: 10px;
+}
+ul li {
+  list-style: none;
+}
+#stacktrace {
+  margin-left: 60px;
+}
+</style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>OWASP Juice Shop (Express ^4.17.1)</h1>
+      <h2><em>401</em> UnauthorizedError: No Authorization header was found</h2>
+      <ul id="stacktrace"></ul>
+    </div>
+  </body>
+</html>
+```
+
+So, this one is solved now. I'm sure that this one would pop up eventually, as this application doesn't handle a lot of things well.
+
+<img src="images/1-error-solved.png">
 
 ### Privacy Policy Tier 1
 > Read our privacy policy.
@@ -74,9 +131,19 @@ This one was funny. I stumbled upon it just clicking on links, looking if I coul
 * Solved? :heavy_minus_sign:
 * Tools Used: :heavy_minus_sign:
 
+TODO
+
 ### Repetitive Registration
 > Follow the DRY principle while registering a user.
 
+* Solved? :heavy_minus_sign:
+* Tools Used: Chrome
+
+Not really sure on what the solution is to this one yet. I know DRY means "Don't repeat yourself", and the hints mention the repeated password. I've tried making a request without the repeated password or with a different repeated password (and had success lol), but that doesn't look like its the solution. I'll come back to this one later.
+
+Coming back to this one, it looks like if you try to change your password, the endpoint that is called is `http://<root>/rest/user/change-password?current=CURRENTPASSWORD&new=NEWPASSWORD&repeat=CURRENTPASSWORD`. Is this the only way to change a password? Let's dig into that.
+
+TODO
 
 ### Score Board
 > Find the carefully hidden 'Score Board' page.
@@ -102,12 +169,14 @@ My first thought when I saw that reflected was the "tier 0" challenge and DOM-ba
 I opened up the network tab on Chrome and looked at the requests being sent to and from the backend. After a few inputs, I noticed that the _Track Order_ page was sending back sanitized markup in its response, so this was probably it.
 
 **Chrome Request**
+
 ```
 # Chrome URI-encoded this string <b>x</b> to %3Cb%3Ex%3C%2Fb%3E
 <root>/rest/track-order/%3Cb%3Ex%3C%2Fb%3E
 ```
+
 **Response JSON**
-```
+```json
 {"status":"success","data":[{"orderId":"<b>x</b>"}]}
 ```
 
