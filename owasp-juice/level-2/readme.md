@@ -4,11 +4,11 @@
 
 | Challenge | Description | Status |
 | --- | --- | --- |
-| Admin Section | Access the administration section of the store. | :heavy_minus_sign:
+| Admin Section | Access the administration section of the store. | :white_check_mark:
 | Basket Access Tier 1 | View another user's shopping basket. | :white_check_mark:
 | Deprecated Interface | Use a deprecated B2B interface that was not properly shut down. | :heavy_minus_sign:
 | Five-Star Feedback | Get rid of all 5-star customer feedback. | :white_check_mark:
-| Login Admin | Log in with the administrator's user account. | :heavy_minus_sign:
+| Login Admin | Log in with the administrator's user account. | :white_check_mark:
 | Login MC SafeSearch | Log in with MC SafeSearch's original user credentials without applying SQL Injection or any other bypass. | :heavy_minus_sign:
 | Password Strength | Log in with the administrator's user credentials without previously changing them or applying SQL Injection. | :heavy_minus_sign:
 | Security Policy | Behave like any "white-hat" should. | :heavy_minus_sign:
@@ -21,8 +21,20 @@
 
 > Access the administration section of the store.
 
-* Solved? :heavy_minus_sign:
-* Tools Used: Chrome, :heavy_minus_sign:
+* Solved? :white_check_mark:
+* Tools Used: Just Chrome
+
+I was guessing that the administration section was pretty easily findable, so I tried adding `/admin`, `/administration`, `/#/admin`, and when I tried `/#/administration`, I got the following unauthorized error.
+
+<img src="images/2-admin-section-unauthorized.png">
+
+Looks like I found it! Now, I just need an account that can access it. Instead of looking around for a way in without credentials, I attempted to login with some more privileged credentials. Once I solved the **Login Admin** challenge, I was able to access the admin page!
+
+<img src="images/2-admin-section-page.png">
+
+Solved!
+
+<img src="images/2-admin-section-solved.png">
 
 ### Basket Access Tier 1
 
@@ -217,8 +229,17 @@ Solved!
 
 > Log in with the administrator's user account.
 
-* Solved? :heavy_minus_sign:
-* Tools Used: :heavy_minus_sign:
+* Solved? :white_check_mark:
+* Tools Used: Just Chrome
+
+I logged out of my account, and attempted to use the basic SQL injection `' OR 1=1; --`.
+
+<img src="images/2-admin-login-sql-injection.png">
+
+And voila, logged in as the admin, which was probably user ID 1 in the system. Solved!
+
+<img src="images/2-admin-login-solved.png">
+
 
 ### Login MC SafeSearch
 
