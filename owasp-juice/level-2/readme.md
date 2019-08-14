@@ -10,9 +10,9 @@
 | Five-Star Feedback | Get rid of all 5-star customer feedback. | :white_check_mark:
 | Login Admin | Log in with the administrator's user account. | :white_check_mark:
 | Login MC SafeSearch | Log in with MC SafeSearch's original user credentials without applying SQL Injection or any other bypass. | :heavy_minus_sign:
-| Password Strength | Log in with the administrator's user credentials without previously changing them or applying SQL Injection. | :heavy_minus_sign:
+| Password Strength | Log in with the administrator's user credentials without previously changing them or applying SQL Injection. | :white_check_mark:
 | Security Policy | Behave like any "white-hat" should. | :heavy_minus_sign:
-| Weird Crypto | Inform the shop about an algorithm or library it should definitely not use the way it does. | :heavy_minus_sign:
+| Weird Crypto | Inform the shop about an algorithm or library it should definitely not use the way it does. | :white_check_mark:
 | XSS Tier 1.5 | Perform an XSS attack with `<script>alert('xss')</script>` on a legacy page within the application. | :heavy_minus_sign:
 
 ## Solutions
@@ -252,8 +252,27 @@ And voila, logged in as the admin, which was probably user ID 1 in the system. S
 
 > Log in with the administrator's user credentials without previously changing them or applying SQL Injection.
 
-* Solved? :heavy_minus_sign:
-* Tools Used: :heavy_minus_sign:
+* Solved? :white_check_mark:
+* Tools Used: Chrome, Chrome Inspector
+
+So, the application uses JWT to pass information in tokens. Let's see what it contains.
+
+<img src="images/2-admin-password-jwt.png">
+
+I find the following hash that is stored **in** the encoded JWT token! And it doesn't look like its a very secure hash.
+
+```
+0192023a7bbd73250516f069df18b500
+```
+
+A quick google search for that hash reveals that the un-hashed value is `admin123`. 
+
+<img src="images/2-admin-password-md5-hash.png">
+
+Wow. So secure! Now I just log in with the email and password. Solved!
+
+<img src="images/2-admin-password-solved.png">
+
 
 ### Security Policy
 
@@ -266,8 +285,12 @@ And voila, logged in as the admin, which was probably user ID 1 in the system. S
 
 > Inform the shop about an algorithm or library it should definitely not use the way it does.
 
-* Solved? :heavy_minus_sign:
-* Tools Used: :heavy_minus_sign:
+* Solved? :white_check_mark:
+* Tools Used: Chrome, Chrome Inspector
+
+Well, at this point, I've gotten access to the admin account, and have learned that they are using **MD5** to hash the users' password, I decided to type that in since you should never use it for passwords! And.... solved!
+
+<img src="images/2-crypto-solved.png">
 
 ### XSS Tier 1.5
 
