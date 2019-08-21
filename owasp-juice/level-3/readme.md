@@ -33,7 +33,6 @@
 * Solved? :heavy_minus_sign:
 * Tools Used: :heavy_minus_sign:
 
-
 ### Basket Access Tier 2
 
 > Put an additional product into another user's shopping basket.
