@@ -1,6 +1,8 @@
 # Bonus Challenge: Generating a JWT Token for a Non-Existent User With Admin Privileges
 *(It's not listed in the scoreboard as of 2019/08/21)*
 
+*Update: Looks like a portion of this challenge [will get added](https://github.com/bkimminich/juice-shop/issues/1194#issuecomment-523656805) to the actual application!*
+
 ## Description
 I was attempting to complete the [Admin Registration (L3)](../../level-3#admin-registration) challenge, and while attempting that, I discovered a way to generate a JSON Web Token (JWT) for a non-existent user that had admin privileges.
 
