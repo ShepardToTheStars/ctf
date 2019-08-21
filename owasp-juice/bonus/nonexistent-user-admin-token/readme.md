@@ -107,7 +107,8 @@ Boom! I'm an admin that doesn't exist! To finish this off, I went to the adminis
 <img src="images/nonexistent-user-admin-token-admin-page.png">
 
 ### Differences from the Current SQL Injection Challenges
-All of the challenges want you to log in as an existing user (or it mentions NOT to use SQL injection).
+
+All of the challenges want you to log in as an existing user (or it mentions NOT to use SQL injection). It also makes you use some more complex SQL injection using `UNION` and makes for an interesting challenge that differs from the other SQL injection challenges. Also makes you try to figure out the User table schema, either by applying more injection or trying to infer it.
 
 ### Differences from the Current JWT Challenges
 
