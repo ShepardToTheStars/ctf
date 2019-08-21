@@ -69,7 +69,7 @@ SELECT *
 FROM  users 
 WHERE  email = '' 
 
-UNION ALL
+UNION
 
 SELECT * 
 FROM ( 
@@ -104,11 +104,15 @@ Boom! I'm an admin that doesn't exist! To finish this off, I went to the adminis
 
 <img src="images/nonexistent-user-admin-token-admin-page.png">
 
+### Differences from the Current SQL Injection Challenges
+All of the challenges want you to log in as an existing user (or it mentions NOT to use SQL injection).
+
 ### Differences from the Current JWT Challenges
 
 There are 2 different JWT challenges. They both mention that the token should be unsigned or almost properly signed, but I actually have a properly signed JWT token now. Hmm... Let's try using this method and see if we complete the challenges.
 
 > **JWT Issues Tier 1 (T5)**
+>
 > Forge an essentially unsigned JWT token that impersonates the (non-existing) user jwtn3d@juice-sh.op.
 
 ```
@@ -122,6 +126,7 @@ eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI
 Challenge not complete even with the above token!
 
 > **JWT Issues Tier 2 (T6)**
+>
 > Forge an almost properly RSA-signed JWT token that impersonates the (non-existing) user rsa_lord@juice-sh.op.
 
 **Injection Payload**
