@@ -31,6 +31,8 @@ For the one above, I got the column mismatch again, but the syntax was valid and
 
 Once I clicked the submit button, I got presenting with a 2FA page. Progress!
 
+*Note that my user does NOT have 2FA attached to it, but it brings me to the page anyways.*
+
 <img src="images/nonexistent-user-admin-token-2fa.png">
 
 From there I looked at the token that I got back in the requests, and it was another JWT token.
