@@ -13,7 +13,7 @@
 | Login Amy | Log in with Amy's original user credentials. (This could take 93.83 billion trillion trillion centuries to brute force, but luckily she did not read the "One Important Final Note") | :heavy_minus_sign:
 | [Login Bender](#login-bender) | Log in with Bender's user account. | :white_check_mark:
 | [Login Jim](](#login-jim)) | Log in with Jim's user account. | :white_check_mark:
-| Payback Time | Place an order that makes you rich. | :heavy_minus_sign:
+| [Payback Time](#payback-time) | Place an order that makes you rich. | :white_check_mark:
 | Privacy Policy Tier 2 | Prove that you actually read our privacy policy. | :heavy_minus_sign:
 | Product Tampering | Change the href of the link within the OWASP SSL Advanced Forensic Tool (O-Saft) product description into https://owasp.slack.com. | :heavy_minus_sign:
 | Reset Bjoern's Password Tier 1 | Reset the password of Bjoern's OWASP account via the Forgot Password mechanism with the original answer to his security question. | :heavy_minus_sign:
