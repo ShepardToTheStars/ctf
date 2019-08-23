@@ -8,7 +8,7 @@
 | Basket Access Tier 2 | Put an additional product into another user's shopping basket. | :heavy_minus_sign:
 | [CAPTCHA Bypass Tier 1](#captcha-bypass-tier-1) | Submit 10 or more customer feedbacks within 10 seconds. | :white_check_mark:
 | [Forged Feedback](#forged-feedback) | Post some feedback in another users name. | :white_check_mark:
-| Forged Review | Post a product review as another user or edit any user's existing review. | :heavy_minus_sign:
+| [Forged Review](#forged-review) | Post a product review as another user or edit any user's existing review. | :white_check_mark:
 | [GDPR Compliance Tier 1](#gdpr-compliance-tier-1) | Log in with Chris' erased user account. | :white_check_mark:
 | Login Amy | Log in with Amy's original user credentials. (This could take 93.83 billion trillion trillion centuries to brute force, but luckily she did not read the "One Important Final Note") | :heavy_minus_sign:
 | [Login Bender](#login-bender) | Log in with Bender's user account. | :white_check_mark:
@@ -137,12 +137,29 @@ And they are not checking if I am the user I say I am before they add the feedba
 
 > Post a product review as another user or edit any user's existing review.
 
-* Solved? :heavy_minus_sign:
+* Solved? :white_check_mark:
 * Tools Used: Chrome, Chrome Inspector, curl
 * Previous Challenge Knowledge Used: [Forged Feedback (L3)](#forged-feedback)
 
+--data-binary $'{"message":"I\'ve changed my mind\u0021 This is a bad product.","author":"admin@juice-sh.op"}'
 
+Basically used the same strategy as the [Forged Feedback](#forged-feedback) challenge. I submitted the review, and copied that POST request that was send to the `http://172.16.189.131:3000/rest/products/1/reviews` endpoint. The JSON payload for the copied request was the following:
 
+```json
+{"message":"I've changed my mind\u0021 This is a bad product.","author":"someone@something.io"}
+```
+
+All I had to do was edit the email address, and resend the request.
+
+```json
+{"message":"I've changed my mind\u0021 This is a bad product.","author":"admin@juice-sh.op"}
+```
+
+Solved!
+
+*Also note the escaped character in the review. Probably is relevant.*
+
+<img src="images/3-forged-feedback-solved.png">
 
 ### GDPR Compliance Tier 1
 
@@ -225,7 +242,7 @@ Solved!
 * Solved? :white_check_mark:
 * Tools Used: Chrome, Chrome Inspector, curl
 
-After being a developer for the first ~7 years of my career, I knew exactly where to look for this one. I needed to either change my backet's total, the product's price or the quanitiy of a product in my basket to a negative number. One of those would make my total negative, and they would end up refunding me that money.
+After being a developer for the first ~7 years of my career, I knew exactly where to look for this one. I needed to either change my basket's total, the product's price or the quantity of a product in my basket to a negative number. One of those would make my total negative, and they would end up refunding me that money.
 
 I looked through the products page, and found a super nice Melon Bike for $2999 in the store. I definitely need one of those.
 
